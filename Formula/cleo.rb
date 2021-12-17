@@ -5,12 +5,12 @@
 class Cleo < Formula
   desc "Cleo CLI - do stuff faster"
   homepage "https://github.com/meetcleo/cleo-cli"
-  version "0.1.0"
+  version "0.2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/meetcleo/cleo-cli/releases/download/v0.1.0/cleo_0.1.0_darwin_amd64.tar.gz"
-      sha256 "3902254e58858e197c718059141eca7710c51e459dda38b1463938d2b8cf31b0"
+      url "https://github.com/meetcleo/cleo-cli/releases/download/v0.2.0/cleo_0.2.0_darwin_amd64.tar.gz"
+      sha256 "8fee3a5839623269cf75c0b5a307d7e30e3fe68e1b04ac47530831be0570fffd"
 
       def install
         bin.install "cleo"
@@ -20,8 +20,8 @@ class Cleo < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/meetcleo/cleo-cli/releases/download/v0.1.0/cleo_0.1.0_linux_amd64.tar.gz"
-      sha256 "d3ba3414d7fc5a3e3f37ff3f8064a231dd92710cc3092f9df571c0a2df06b4bb"
+      url "https://github.com/meetcleo/cleo-cli/releases/download/v0.2.0/cleo_0.2.0_linux_amd64.tar.gz"
+      sha256 "61b8b9328ec4d6f84c51154e68e836d6dacdfc47aece5779c0f7b85624dab52a"
 
       def install
         bin.install "cleo"
