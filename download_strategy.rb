@@ -48,7 +48,7 @@ end
 # works with public one, but in that case simply use CurlDownloadStrategy.
 class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   require "utils/formatter"
-  require_relative "../github"
+  require_relative "./github"
 
   def initialize(url, name, version, **meta)
     odeprecated("GitHubPrivateRepositoryDownloadStrategy",
