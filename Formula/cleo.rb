@@ -6,12 +6,20 @@ require_relative "../download_strategy"
 class Cleo < Formula
   desc "Cleo CLI - do stuff faster"
   homepage "https://github.com/meetcleo/cleo-cli"
-  version "0.3.5"
+  version "0.3.6"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/meetcleo/cleo-cli/releases/download/v0.3.5/cleo_0.3.5_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "012df5c27e7b41af9ff950bf9638483a8437bed21afdfcac27e4f320c9bae95a"
+      url "https://github.com/meetcleo/cleo-cli/releases/download/v0.3.6/cleo_0.3.6_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "ed37fbb49966aab149a6baf75828307c09091b7c643cd04ecca1a51cfc5f68de"
+
+      def install
+        bin.install "cleo"
+      end
+    end
+    if Hardware::CPU.arm?
+      url "https://github.com/meetcleo/cleo-cli/releases/download/v0.3.6/cleo_0.3.6_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "5198d6c27113a393965724f85c3d149143a48ef68055b63c2d5e09d7ed0b7063"
 
       def install
         bin.install "cleo"
@@ -21,8 +29,16 @@ class Cleo < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/meetcleo/cleo-cli/releases/download/v0.3.5/cleo_0.3.5_linux_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "d0d7485790489c6857f831019ba5ac67e0ded7166a6ca158f71bed436d08cfb1"
+      url "https://github.com/meetcleo/cleo-cli/releases/download/v0.3.6/cleo_0.3.6_linux_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "92d7395ca8975e44d9f07f7ab9da82db2789ef5799a510c57f50aeeb7737abe4"
+
+      def install
+        bin.install "cleo"
+      end
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/meetcleo/cleo-cli/releases/download/v0.3.6/cleo_0.3.6_linux_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "6bf5bcc58ab0190d13f47df6974ef493e9f909ca5a10b032dfafc2c63f9bdb2b"
 
       def install
         bin.install "cleo"
