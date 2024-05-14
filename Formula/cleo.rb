@@ -6,12 +6,12 @@ require_relative "../download_strategy"
 class Cleo < Formula
   desc "Cleo CLI - do stuff faster"
   homepage "https://github.com/meetcleo/cleo-cli"
-  version "1.0.4"
+  version "1.0.5"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/meetcleo/cleo-cli/releases/download/v1.0.4/cleo_1.0.4_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "5724e4227ef8764d77306777d15d06cfce85c48bd8b33a81fcdfcf6c77699687"
+    on_intel do
+      url "https://github.com/meetcleo/cleo-cli/releases/download/v1.0.5/cleo_1.0.5_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "7fc74ddc8fb9f63f3d519bee992fa0b35a4bff4a316e1a9d56c399bbd46efd0d"
 
       def install
         bin.install "cleo"
@@ -20,9 +20,9 @@ class Cleo < Formula
         fish_completion.install "completions/cleo.fish"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/meetcleo/cleo-cli/releases/download/v1.0.4/cleo_1.0.4_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "4bc285594020fbebbd1df6566a818194557726d664b16b502fffa42062c5ad71"
+    on_arm do
+      url "https://github.com/meetcleo/cleo-cli/releases/download/v1.0.5/cleo_1.0.5_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "969b9575f3f29748db9c0b7ff1442a2714142f301a15e6ca9b14b1cff38ceac4"
 
       def install
         bin.install "cleo"
@@ -34,26 +34,30 @@ class Cleo < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/meetcleo/cleo-cli/releases/download/v1.0.4/cleo_1.0.4_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "28b2284b3b6f38b6cf8c0b927df417ace8f22117fc12b97d68b991aaccbbfb55"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/meetcleo/cleo-cli/releases/download/v1.0.5/cleo_1.0.5_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "95a249c28c052cd75c3141cbc411cb182979cf33e5c054b7f0207543ccf28947"
 
-      def install
-        bin.install "cleo"
-        bash_completion.install "completions/cleo.bash" => "cleo"
-        zsh_completion.install "completions/cleo.zsh" => "_cleo"
-        fish_completion.install "completions/cleo.fish"
+        def install
+          bin.install "cleo"
+          bash_completion.install "completions/cleo.bash" => "cleo"
+          zsh_completion.install "completions/cleo.zsh" => "_cleo"
+          fish_completion.install "completions/cleo.fish"
+        end
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/meetcleo/cleo-cli/releases/download/v1.0.4/cleo_1.0.4_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "be7165d4b3ef25abd436bcef97c3558e6307d027ad77fd521fbfd25ecf44bb7f"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/meetcleo/cleo-cli/releases/download/v1.0.5/cleo_1.0.5_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "ebd199ee7372483d9a5a028bc6976893278ce8d7d0609f12f8a62676fbd7461c"
 
-      def install
-        bin.install "cleo"
-        bash_completion.install "completions/cleo.bash" => "cleo"
-        zsh_completion.install "completions/cleo.zsh" => "_cleo"
-        fish_completion.install "completions/cleo.fish"
+        def install
+          bin.install "cleo"
+          bash_completion.install "completions/cleo.bash" => "cleo"
+          zsh_completion.install "completions/cleo.zsh" => "_cleo"
+          fish_completion.install "completions/cleo.fish"
+        end
       end
     end
   end
