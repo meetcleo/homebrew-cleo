@@ -4,11 +4,6 @@ require "tempfile"
 module GitHub
   module_function
 
-  API_URL = "https://api.github.com".freeze
-
-  CREATE_GIST_SCOPES = ["gist"].freeze
-  CREATE_ISSUE_FORK_OR_PR_SCOPES = ["public_repo"].freeze
-  ALL_SCOPES = (CREATE_GIST_SCOPES + CREATE_ISSUE_FORK_OR_PR_SCOPES).freeze
   ALL_SCOPES_URL = Formatter.url(
     "https://github.com/settings/tokens/new?scopes=#{ALL_SCOPES.join(",")}&description=Homebrew",
   ).freeze
