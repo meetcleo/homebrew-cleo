@@ -118,7 +118,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   end
   
   def resolve_url_basename_time_file_size(url, timeout: nil)
-    [download_url, "", Time.now, 0, false]
+    [download_url, "", Time.now, 0, nil, false]
   end
 
   private
