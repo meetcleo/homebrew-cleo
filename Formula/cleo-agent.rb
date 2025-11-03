@@ -12,7 +12,7 @@ class CleoAgent < Formula
   on_macos do
     on_intel do
       url "https://github.com/meetcleo/cleo-agent/releases/download/v0.1.0/cleo-agent_0.1.0_darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "145dec75774ff184ff4e4f48684c9928b37810b6db33b3206d570f1f7a39f2a0"
+      sha256 "807c946bb6b051b3490034914b2651163183787246469d2215209776ab4123e8"
 
       def install
         bin.install "cleo-agent"
@@ -21,7 +21,7 @@ class CleoAgent < Formula
 
     on_arm do
       url "https://github.com/meetcleo/cleo-agent/releases/download/v0.1.0/cleo-agent_0.1.0_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "c0f7ef678b2f5b37c977ed109ce470720b07272b9706ab67d2979939007107dc"
+      sha256 "88bcdd700dd11f9f12b51962e06809e290592f629464c6aff56589c69176cf09"
 
       def install
         bin.install "cleo-agent"
@@ -33,7 +33,7 @@ class CleoAgent < Formula
     on_intel do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/meetcleo/cleo-agent/releases/download/v0.1.0/cleo-agent_0.1.0_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "47a9019b6edf623e86324326bac241623597c387c18edac851437e01a10a4866"
+        sha256 "577eb595eb273550883c649a96da86d73f297851b19d2b77458c10ad98cc2852"
 
         def install
           bin.install "cleo-agent"
