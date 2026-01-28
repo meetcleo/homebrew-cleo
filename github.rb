@@ -10,6 +10,10 @@ module GitHub
   PR_ENV_KEY = "HOMEBREW_NEW_FORMULA_PULL_REQUEST_URL".freeze
   PR_ENV = ENV[PR_ENV_KEY]
 
+  ALL_SCOPES_URL = Formatter.url(
+    "https://github.com/settings/tokens/new?scopes=#{ALL_SCOPES.join(",")}&description=Homebrew",
+  ).freeze
+
   class Error < RuntimeError
     attr_reader :github_message
   end
