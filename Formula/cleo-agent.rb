@@ -7,12 +7,12 @@ require_relative "../download_strategy"
 class CleoAgent < Formula
   desc "Cleo agent executable"
   homepage "https://github.com/meetcleo/cleo-agent"
-  version "1.4.22"
+  version "1.4.23"
 
   on_macos do
     on_intel do
-      url "https://github.com/meetcleo/cleo-agent/releases/download/v1.4.22/cleo-agent_1.4.22_darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "9dc65ceb06ed4b34d252ff87e59615dff8cb998bd019e5cda7101f0995114162"
+      url "https://github.com/meetcleo/cleo-agent/releases/download/v1.4.23/cleo-agent_1.4.23_darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "163f38dbfe22378b28fcafbf91f8c9bc21f264db66a194edd00713c78b85d9b3"
 
       def install
         bin.install "cleo-agent"
@@ -20,8 +20,8 @@ class CleoAgent < Formula
     end
 
     on_arm do
-      url "https://github.com/meetcleo/cleo-agent/releases/download/v1.4.22/cleo-agent_1.4.22_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "972bb8c3b180d5829121d0fcd71cb65b6a87285f1e4327c428f8e6eea73ddb29"
+      url "https://github.com/meetcleo/cleo-agent/releases/download/v1.4.23/cleo-agent_1.4.23_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "9a4765917578979f6c8009ca10440fd8f76f885c644500ea76b9762d6fb53553"
 
       def install
         bin.install "cleo-agent"
@@ -32,8 +32,8 @@ class CleoAgent < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/meetcleo/cleo-agent/releases/download/v1.4.22/cleo-agent_1.4.22_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "e0cf8eb6d026bb4019660e551803353cbd875f972ecb852a1605ea363e55f8a0"
+        url "https://github.com/meetcleo/cleo-agent/releases/download/v1.4.23/cleo-agent_1.4.23_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "8bb3d3938ec7cab022c4b88682cf72bbcae1606170ac0a376568d27a49539cb0"
 
         def install
           bin.install "cleo-agent"
