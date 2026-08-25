@@ -6,14 +6,14 @@ require_relative "../download_strategy"
 class Cleo < Formula
   desc "Cleo CLI - do stuff faster"
   homepage "https://github.com/meetcleo/cleo-cli"
-  version "1.53.1"
+  version "1.53.2"
 
   depends_on "frpc"
 
   on_macos do
     on_intel do
-      url "https://github.com/meetcleo/cleo-cli/releases/download/v1.53.1/cleo_1.53.1_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f1b5b0953ba96934d8f0fe1e2599c339285a7dfe2419bd2d91f32a236af802a5"
+      url "https://github.com/meetcleo/cleo-cli/releases/download/v1.53.2/cleo_1.53.2_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "b69b7c277636d49ebb681bea238e25474a4a64bd9f4d5e830f73f79a8eba24ae"
 
       def install
         bin.install "cleo"
@@ -23,8 +23,8 @@ class Cleo < Formula
       end
     end
     on_arm do
-      url "https://github.com/meetcleo/cleo-cli/releases/download/v1.53.1/cleo_1.53.1_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "07edaaa13d07dc4e1d95226ae66df5aa651d4ab6f80b8eed6d943a57d368797c"
+      url "https://github.com/meetcleo/cleo-cli/releases/download/v1.53.2/cleo_1.53.2_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "8e27b7ef8ae38be5bd6c912e611335b66dd30041178333da865a2a6302fcc748"
 
       def install
         bin.install "cleo"
@@ -38,8 +38,8 @@ class Cleo < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/meetcleo/cleo-cli/releases/download/v1.53.1/cleo_1.53.1_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "f59bb3cc5e07993f5996d35164850a867c1cca42609d9478b60ed7aa1bd110f9"
+        url "https://github.com/meetcleo/cleo-cli/releases/download/v1.53.2/cleo_1.53.2_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "530b7cdba75d24e4782541705f6706469d8db5b0ee9931f034840b4ca0216bbf"
 
         def install
           bin.install "cleo"
@@ -51,8 +51,8 @@ class Cleo < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/meetcleo/cleo-cli/releases/download/v1.53.1/cleo_1.53.1_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "a220bfe5c4030c86d9e72d85618291d794a0c06ef925071d4437e90b8a439892"
+        url "https://github.com/meetcleo/cleo-cli/releases/download/v1.53.2/cleo_1.53.2_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "8ac0c187536a05fbc474be3963f04477bac0fd3311af5d1820411f7058696741"
 
         def install
           bin.install "cleo"
