@@ -39,8 +39,8 @@ end
 # GitHubPrivateRepositoryDownloadStrategy downloads contents from GitHub
 # Private Repository. To use it, add
 # `:using => :github_private_repo` to the URL section of
-# your formula. This download strategy uses GitHub access tokens (in the
-# environment variables `HOMEBREW_GITHUB_API_TOKEN`) to sign the request.  This
+# your formula. This download strategy uses the token from `gh auth token`,
+# falling back to the environment variable `HOMEBREW_GITHUB_API_TOKEN`, to sign the request.  This
 # strategy is suitable for corporate use just like S3DownloadStrategy, because
 # it lets you use a private GitHub repository for internal distribution.  It
 # works with public one, but in that case simply use CurlDownloadStrategy.
@@ -73,12 +73,34 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   end
 
   def set_github_token
-    @github_token = ENV["HOMEBREW_GITHUB_API_TOKEN"]
-    unless @github_token
-      raise CurlDownloadStrategyError, "Environmental variable HOMEBREW_GITHUB_API_TOKEN is required."
+    candidates = [gh_cli_token, ENV["HOMEBREW_GITHUB_API_TOKEN"]].compact.uniq
+    if candidates.empty?
+      raise CurlDownloadStrategyError, <<~EOS
+        No GitHub token found. Run `gh auth login`, or set HOMEBREW_GITHUB_API_TOKEN.
+      EOS
     end
 
-    validate_github_repository_access!
+    candidates.each_with_index do |token, index|
+      @github_token = token
+      ENV["HOMEBREW_GITHUB_API_TOKEN"] = token
+      GitHub.instance_variable_set(:@api_credentials, nil)
+      begin
+        validate_github_repository_access!
+        return
+      rescue CurlDownloadStrategyError, GitHub::AuthenticationFailedError
+        raise if index == candidates.length - 1
+      end
+    end
+  end
+
+  def gh_cli_token
+    gh = which("gh", ENV["HOMEBREW_PATH"])
+    return unless gh
+
+    token = Utils.popen_read(gh.to_s, "auth", "token", "--hostname", "github.com", err: :close).strip
+    token.empty? ? nil : token
+  rescue StandardError
+    nil
   end
 
   def validate_github_repository_access!
